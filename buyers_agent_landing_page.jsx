@@ -1,4 +1,7 @@
-import React from "react";
+<html>
+This is RAKK PROPERTY ADVISORY Page
+
+</html>/*import React from "react";
 
 export default function RAKKPropertyAdvisory() {
   const nav = [
@@ -619,4 +622,4 @@ export default function RAKKPropertyAdvisory() {
       </footer>
     </div>
   );
-}
+}*/
