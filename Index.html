@@ -1,299 +1,371 @@
-import React from "react";
+<!DOCTYPE html>
+<html lang="en">
 
-export default function RAKKPropertyAdvisory() {
-  const nav = ["How It Works","Services","Case Studies","SEO","Contact"];
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAKK Property Advisory</title>
 
-  const steps = [
-    {number:"01",title:"Strategy",text:"We define your goals, borrowing power and suburb strategy whether you are an investor or owner occupier."},
-    {number:"02",title:"Property Search",text:"We source on-market, pre-market and off-market opportunities across Sydney."},
-    {number:"03",title:"Due Diligence",text:"We analyse value, growth potential, risks and negotiation strategy."},
-    {number:"04",title:"Negotiation & Purchase",text:"We negotiate with selling agents and guide you through settlement."}
-  ];
+<style>
 
-  const caseStudies=[
-    {title:"Western Sydney Investment",price:"$720k Purchase",result:"Value increased to $820k within 12 months",desc:"Strong land component and growth corridor created immediate equity."},
-    {title:"Sydney Family Home",price:"$1.1M Purchase",result:"Purchased $80k below competing offer",desc:"Strategic negotiation secured the property under market pressure."},
-    {title:"Investor Portfolio Purchase",price:"$650k Purchase",result:"High rental demand suburb",desc:"Targeted suburb selection focusing on yield and infrastructure."}
-  ];
+body{
+font-family:Arial, Helvetica, sans-serif;
+margin:0;
+background:#ffffff;
+color:#333;
+}
 
-  const suburbs=[
-    {name:"Parramatta",median:"$1.15M",yield:"3.4%",vacancy:"1.7%",outlook:"Strong infrastructure"},
-    {name:"Blacktown",median:"$920k",yield:"3.8%",vacancy:"1.5%",outlook:"Growth corridor"},
-    {name:"Liverpool",median:"$890k",yield:"4.1%",vacancy:"1.8%",outlook:"Transport hub"},
-    {name:"Penrith",median:"$870k",yield:"3.9%",vacancy:"1.6%",outlook:"Airport corridor"}
-  ];
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+border-bottom:1px solid #eee;
+}
 
-  const seoKeywords=[
-    "Sydney Buyers Agent",
-    "Best Buyers Agent Sydney",
-    "Investment Property Buyers Agent Sydney",
-    "Sydney Property Advisory",
-    "Off Market Property Sydney"
-  ];
+.logo{
+font-size:24px;
+font-weight:bold;
+color:#ff7a00;
+}
 
-  const [finder,setFinder]=React.useState({budget:"",goal:"Investment",priority:"Growth"});
+.logo span{
+display:block;
+font-size:12px;
+color:#1d4ed8;
+}
 
-  const filteredSuburbs=suburbs.filter((s)=>{
-    const median=Number(s.median.replace(/[^\d]/g,""));
-    return finder.budget?median<=Number(finder.budget):true;
-  });
+nav a{
+margin:0 10px;
+text-decoration:none;
+color:#555;
+font-weight:600;
+}
 
-  const [cashflowInputs,setCashflowInputs]=React.useState({price:800000,rent:750,rate:6.2,deposit:20,expenses:1.5});
+.hero{
+background:linear-gradient(to right,#fff7ed,#ffffff,#eff6ff);
+padding:80px 40px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+}
 
-  const cashflow=(cashflowInputs.rent*52)-(cashflowInputs.price*(1-cashflowInputs.deposit/100)*(cashflowInputs.rate/100))-(cashflowInputs.price*(cashflowInputs.expenses/100));
+.hero h1{
+font-size:42px;
+}
 
-  return(
+.button{
+display:inline-block;
+padding:12px 20px;
+border-radius:6px;
+text-decoration:none;
+font-weight:bold;
+margin-right:10px;
+}
 
-<div className="min-h-screen bg-white text-gray-900">
+.orange{
+background:#ff7a00;
+color:white;
+}
 
-<header className="sticky top-0 z-50 border-b bg-white">
-<div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-<div>
-<div className="text-2xl font-black text-orange-500">RAKK</div>
-<div className="text-xs text-blue-700">Property Advisory</div>
-</div>
+.blue{
+border:2px solid #1d4ed8;
+color:#1d4ed8;
+}
 
-<nav className="hidden gap-8 md:flex">
-{nav.map(i=> (
-<a key={i} href={`#${i.toLowerCase().replace(/\s+/g,"-")}`} className="text-sm font-semibold text-gray-600 hover:text-blue-700">{i}</a>
-))}
+.section{
+padding:70px 40px;
+max-width:1100px;
+margin:auto;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+table th,table td{
+padding:12px;
+border-bottom:1px solid #eee;
+text-align:left;
+}
+
+.card{
+border:1px solid #eee;
+border-radius:8px;
+padding:30px;
+background:white;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+}
+
+.pricing{
+background:#f9fafb;
+}
+
+.price{
+font-size:40px;
+font-weight:bold;
+color:#ff7a00;
+}
+
+.popular{
+border:2px solid #1d4ed8;
+}
+
+.contact{
+background:#1d4ed8;
+color:white;
+padding:80px 40px;
+}
+
+form input, form textarea{
+width:100%;
+padding:10px;
+margin-bottom:10px;
+border:1px solid #ddd;
+border-radius:5px;
+}
+
+form button{
+background:#ff7a00;
+color:white;
+padding:12px;
+border:none;
+border-radius:6px;
+font-weight:bold;
+}
+
+footer{
+border-top:1px solid #eee;
+padding:20px 40px;
+}
+
+</style>
+</head>
+
+
+<body>
+
+<header>
+<div class="logo">RAKK<span>Property Advisory</span></div>
+
+<nav>
+<a href="#services">Services</a>
+<a href="#case">Case Studies</a>
+<a href="#seo">SEO</a>
+<a href="#contact">Contact</a>
 </nav>
 
-<a href="#contact" className="rounded-xl bg-blue-700 px-5 py-3 text-sm font-semibold text-white">Book Consultation</a>
-</div>
+<a class="button orange" href="#contact">Book Consultation</a>
 </header>
 
-<main>
 
-<section className="bg-gradient-to-r from-orange-50 via-white to-blue-50">
-<div className="mx-auto grid max-w-7xl gap-12 px-6 py-24 lg:grid-cols-2">
+<section class="hero">
 
-<div className="flex flex-col justify-center">
-<h1 className="text-5xl font-black leading-tight">Buy Property Smarter with a Professional Buyer’s Agent</h1>
+<div>
+<h1>Buy Property Smarter with a Professional Buyer’s Agent</h1>
 
-<p className="mt-6 text-lg text-gray-600">RAKK Property Advisory helps investors and home buyers secure the right property in Sydney using research, negotiation and professional buyer representation.</p>
+<p>
+RAKK Property Advisory helps investors and home buyers secure the right property in Sydney using research, negotiation and professional buyer representation.
+</p>
 
-<div className="mt-8 flex gap-4">
-<a href="#ai-suburb-finder" className="rounded-xl bg-orange-500 px-6 py-4 font-semibold text-white">Find Best Suburb</a>
-<a href="#services" className="rounded-xl border border-blue-700 px-6 py-4 font-semibold text-blue-700">View Services</a>
-</div>
+<a class="button orange">Find Best Suburb</a>
+<a class="button blue">View Services</a>
 
-<div className="mt-6 text-sm text-gray-500">Sydney Buyers Agent • Investment Properties • Owner Occupiers</div>
-</div>
-
-<div className="rounded-3xl bg-blue-700 p-10 text-white shadow-xl">
-<h2 className="text-3xl font-bold">Sydney Buyers Agent</h2>
-<p className="mt-4 text-blue-100">Helping clients secure the right property through research, negotiation and off‑market access.</p>
-
-<div className="mt-8 grid grid-cols-2 gap-4">
-<div className="rounded-xl bg-white/20 p-4">
-<div className="text-2xl font-bold">Investors</div>
-<div className="text-sm">Growth focused</div>
-</div>
-
-<div className="rounded-xl bg-white/20 p-4">
-<div className="text-2xl font-bold">Home Buyers</div>
-<div className="text-sm">Stress free</div>
-</div>
-</div>
-</div>
+<p style="margin-top:15px;color:#777;">
+Sydney Buyers Agent • Investment Properties • Owner Occupiers
+</p>
 
 </div>
+
+<div class="card" style="background:#1d4ed8;color:white;">
+<h2>Sydney Buyers Agent</h2>
+
+<p>
+Helping clients secure the right property through research, negotiation and off-market access.
+</p>
+
+</div>
+
 </section>
 
-<section id="suburb-data-dashboard" className="mx-auto max-w-7xl px-6 py-20">
-<h2 className="text-4xl font-black">Sydney Suburb Dashboard</h2>
 
-<div className="mt-10 overflow-hidden rounded-2xl border">
-<table className="min-w-full bg-white">
-<thead className="bg-blue-50">
+<section class="section">
+
+<h2>Sydney Suburb Dashboard</h2>
+
+<table>
+
 <tr>
-<th className="px-6 py-4">Suburb</th>
-<th className="px-6 py-4">Median</th>
-<th className="px-6 py-4">Yield</th>
-<th className="px-6 py-4">Vacancy</th>
-<th className="px-6 py-4">Outlook</th>
+<th>Suburb</th>
+<th>Median</th>
+<th>Yield</th>
+<th>Vacancy</th>
+<th>Outlook</th>
 </tr>
-</thead>
-<tbody>
-{suburbs.map(s=> (
-<tr key={s.name} className="border-t">
-<td className="px-6 py-4 font-semibold">{s.name}</td>
-<td className="px-6 py-4">{s.median}</td>
-<td className="px-6 py-4">{s.yield}</td>
-<td className="px-6 py-4">{s.vacancy}</td>
-<td className="px-6 py-4 text-green-700">{s.outlook}</td>
+
+<tr>
+<td>Parramatta</td>
+<td>$1.15M</td>
+<td>3.4%</td>
+<td>1.7%</td>
+<td style="color:green;">Strong infrastructure</td>
 </tr>
-))}
-</tbody>
+
+<tr>
+<td>Blacktown</td>
+<td>$920k</td>
+<td>3.8%</td>
+<td>1.5%</td>
+<td style="color:green;">Growth corridor</td>
+</tr>
+
+<tr>
+<td>Liverpool</td>
+<td>$890k</td>
+<td>4.1%</td>
+<td>1.8%</td>
+<td style="color:green;">Transport hub</td>
+</tr>
+
+<tr>
+<td>Penrith</td>
+<td>$870k</td>
+<td>3.9%</td>
+<td>1.6%</td>
+<td style="color:green;">Airport corridor</td>
+</tr>
+
 </table>
-</div>
+
 </section>
 
-<section id="ai-suburb-finder" className="bg-gray-50">
-<div className="mx-auto max-w-6xl px-6 py-20 grid lg:grid-cols-2 gap-10">
 
-<div>
-<div className="text-sm font-bold text-blue-700 uppercase">AI Suburb Finder</div>
-<h2 className="text-4xl font-black mt-3">Find suburbs matching your budget</h2>
+<section id="services" class="section pricing">
 
-<input className="border p-3 rounded mt-6 w-full" placeholder="Budget" value={finder.budget} onChange={e=>setFinder({...finder,budget:e.target.value})}/>
+<h2 style="text-align:center;">Services & Pricing</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>Single Property Service</h3>
+
+<div class="price">$7,000</div>
+
+<p>+ GST</p>
+
+<ul>
+<li>Property search</li>
+<li>Off-market opportunities</li>
+<li>Due diligence</li>
+<li>Negotiation support</li>
+<li>Settlement guidance</li>
+</ul>
+
 </div>
 
-<div className="bg-white p-8 rounded-2xl border">
-<h3 className="text-2xl font-bold">Suggested suburbs</h3>
-<div className="mt-6 space-y-3">
-{filteredSuburbs.slice(0,3).map(s=> (
-<div key={s.name} className="border rounded-lg p-4">
-<div className="font-bold">{s.name}</div>
-<div className="text-sm text-gray-600">Median {s.median} • Yield {s.yield}</div>
-</div>
-))}
-</div>
+<div class="card popular">
+
+<h3>Lifetime Property Service</h3>
+
+<div class="price" style="color:#1d4ed8;">$20,000</div>
+
+<p>+ GST</p>
+
+<ul>
+<li>Unlimited purchases until 2036</li>
+<li>Portfolio strategy</li>
+<li>Off-market sourcing</li>
+<li>Unlimited negotiations</li>
+<li>Investment advisory</li>
+</ul>
+
 </div>
 
 </div>
+
 </section>
 
-<section id="investor-cashflow-calculator" className="bg-orange-50">
-<div className="mx-auto max-w-6xl px-6 py-20 grid lg:grid-cols-2 gap-10">
 
-<div>
-<h2 className="text-4xl font-black">Investor Cashflow Calculator</h2>
+<section id="case" class="section">
 
-<input className="border p-3 rounded mt-6 w-full" type="number" placeholder="Purchase Price" value={cashflowInputs.price} onChange={e=>setCashflowInputs({...cashflowInputs,price:e.target.value})}/>
+<h2>Client Case Studies</h2>
 
-<input className="border p-3 rounded mt-4 w-full" type="number" placeholder="Weekly Rent" value={cashflowInputs.rent} onChange={e=>setCashflowInputs({...cashflowInputs,rent:e.target.value})}/>
+<div class="grid">
+
+<div class="card">
+<h3>Western Sydney Investment</h3>
+<p style="color:#ff7a00;">$720k Purchase</p>
+<p style="color:green;">Value increased to $820k</p>
+<p>Strong land component and growth corridor created immediate equity.</p>
+</div>
+
+<div class="card">
+<h3>Sydney Family Home</h3>
+<p style="color:#ff7a00;">$1.1M Purchase</p>
+<p style="color:green;">$80k below competing offer</p>
+<p>Strategic negotiation secured the property.</p>
+</div>
+
+<div class="card">
+<h3>Investor Portfolio Purchase</h3>
+<p style="color:#ff7a00;">$650k Purchase</p>
+<p style="color:green;">High rental demand suburb</p>
+<p>Targeted suburb selection focusing on yield.</p>
+</div>
 
 </div>
 
-<div className="bg-white p-10 rounded-2xl border text-center">
-<div className="text-sm uppercase text-blue-700">Estimated Annual Cashflow</div>
-<div className={`text-5xl font-black mt-4 ${cashflow>0?"text-green-700":"text-red-600"}`}>{cashflow>0?"+":""}${Math.round(cashflow)}</div>
-</div>
-
-</div>
 </section>
 
-<section id="services" className="bg-gray-50">
-<div className="mx-auto max-w-7xl px-6 py-20">
-<div className="text-center">
-<div className="text-sm font-bold uppercase tracking-[0.2em] text-blue-700">Simple, transparent pricing</div>
-<h2 className="mt-3 text-4xl font-black">Choose the right service for your property goals</h2>
-<p className="mx-auto mt-4 max-w-3xl text-gray-600">Structured for both owner-occupiers and investors, with a clear fixed-fee model and end-to-end buyer representation.</p>
-</div>
 
-<div className="mx-auto mt-8 flex w-fit rounded-full border bg-white p-1 shadow-sm">
-  <button className="rounded-full bg-blue-700 px-5 py-2 text-sm font-semibold text-white">Owner Occupiers</button>
-  <button className="rounded-full px-5 py-2 text-sm font-semibold text-gray-600">Investors</button>
-</div>
+<section id="seo" class="section">
 
-<div className="mt-12 grid gap-8 lg:grid-cols-2">
+<h2>Google SEO Keywords</h2>
 
-<div className="rounded-3xl border bg-white p-10 shadow-sm">
-<div className="text-sm font-bold uppercase tracking-[0.2em] text-orange-500">Single Service</div>
-<h3 className="mt-3 text-3xl font-black">1 Property Purchase</h3>
-<p className="mt-2 text-gray-600">Best for buyers who want full support on one purchase only.</p>
-<div className="mt-6 text-5xl font-black text-orange-500">$7,000</div>
-<div className="mt-2 text-sm font-semibold text-gray-500">+ GST</div>
+<p>
+Sydney Buyers Agent • Best Buyers Agent Sydney • Investment Property Buyers Agent Sydney • Off Market Property Sydney
+</p>
 
-<div className="mt-8 space-y-3 text-gray-700">
-<div>• Dedicated buyer&apos;s agent support</div>
-<div>• Property search and shortlisting</div>
-<div>• Off-market and pre-market opportunities</div>
-<div>• Property assessment and due diligence</div>
-<div>• Negotiation with selling agents</div>
-<div>• Auction strategy and bidding guidance</div>
-<div>• Support through to exchange and settlement</div>
-</div>
-
-<div className="mt-8 rounded-2xl bg-orange-50 p-4 text-sm text-gray-700">Fee applies to one successfully secured property purchase.</div>
-
-<a href="#contact" className="mt-8 inline-flex rounded-xl bg-orange-500 px-5 py-3 text-sm font-semibold text-white">Book Free Consultation</a>
-</div>
-
-<div className="relative rounded-3xl border-2 border-blue-700 bg-white p-10 shadow-lg">
-<div className="absolute -top-4 left-8 rounded-full bg-blue-700 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-white">Popular</div>
-<div className="text-sm font-bold uppercase tracking-[0.2em] text-green-700">Lifetime Service</div>
-<h3 className="mt-3 text-3xl font-black">Unlimited Purchases Until 2036</h3>
-<p className="mt-2 text-gray-600">Best for investors and repeat buyers building long-term wealth with ongoing expert support.</p>
-<div className="mt-6 text-5xl font-black text-blue-700">$20,000</div>
-<div className="mt-2 text-sm font-semibold text-gray-500">+ GST</div>
-
-<div className="mt-8 space-y-3 text-gray-700">
-<div>• Everything in Single Service</div>
-<div>• Unlimited property purchases until 2036</div>
-<div>• Ongoing suburb and portfolio strategy</div>
-<div>• Off-market and pre-market sourcing</div>
-<div>• Unlimited negotiations across purchases</div>
-<div>• Investor-focused acquisition support</div>
-<div>• Long-term advisory for scaling your portfolio</div>
-</div>
-
-<div className="mt-8 rounded-2xl bg-blue-50 p-4 text-sm text-gray-700">Ideal for serious investors who want one advisory partner for multiple purchases over time.</div>
-
-<a href="#contact" className="mt-8 inline-flex rounded-xl bg-blue-700 px-5 py-3 text-sm font-semibold text-white">Book Free Consultation</a>
-</div>
-
-</div>
-
-<div className="mt-12 rounded-3xl border bg-white p-8">
-<h3 className="text-2xl font-black">Money Back Confidence</h3>
-<p className="mt-3 text-gray-600">If you&apos;re not satisfied with the service in the early engagement stage, you can discuss exiting before the active acquisition phase begins. Final refund policy and service terms can be customised for your business model.</p>
-</div>
-</div>
 </section>
 
-<section id="case-studies" className="mx-auto max-w-7xl px-6 py-20">
-<h2 className="text-4xl font-black">Client Case Studies</h2>
 
-<div className="grid md:grid-cols-3 gap-8 mt-10">
-{caseStudies.map(c=> (
-<div key={c.title} className="border rounded-xl p-8">
-<div className="font-bold text-lg">{c.title}</div>
-<div className="text-orange-500 font-semibold mt-2">{c.price}</div>
-<div className="text-green-700 font-semibold">{c.result}</div>
-<p className="text-gray-600 mt-4">{c.desc}</p>
-</div>
-))}
-</div>
-</section>
+<section id="contact" class="contact">
 
-<section id="seo" className="mx-auto max-w-7xl px-6 py-20">
-<h2 className="text-4xl font-black">Google SEO for Sydney Buyers Agent</h2>
+<div class="section">
 
-<div className="flex flex-wrap gap-3 mt-6">
-{seoKeywords.map(k=> (
-<span key={k} className="border rounded-full px-4 py-2 text-sm font-semibold">{k}</span>
-))}
-</div>
-</section>
+<h2>Book Your Consultation</h2>
 
-<section id="contact" className="bg-blue-700 text-white">
-<div className="mx-auto max-w-6xl px-6 py-20">
-<h2 className="text-4xl font-black">Book Your Consultation</h2>
+<form>
 
-<form className="grid gap-4 mt-8 bg-white text-black p-6 rounded-xl">
-<input className="border p-3 rounded" placeholder="Full Name"/>
-<input className="border p-3 rounded" placeholder="Email"/>
-<input className="border p-3 rounded" placeholder="Phone"/>
-<textarea className="border p-3 rounded" placeholder="Tell us what property you want"/>
-<button className="bg-orange-500 text-white py-3 rounded font-semibold">Submit Enquiry</button>
+<input placeholder="Full Name">
+<input placeholder="Email">
+<input placeholder="Phone">
+<textarea placeholder="Tell us what property you want"></textarea>
+
+<button>Submit Enquiry</button>
+
 </form>
 
 </div>
+
 </section>
 
-</main>
 
-<footer className="border-t">
-<div className="max-w-7xl mx-auto px-6 py-10">
-<div className="font-bold">RAKK Property Advisory</div>
-<div className="text-sm text-gray-500">Sydney Buyers Agent • Investment Property Specialist</div>
+<footer>
+
+<div>RAKK Property Advisory</div>
+<div style="font-size:12px;color:#888;">
+Sydney Buyers Agent • Investment Property Specialist
 </div>
+
 </footer>
 
-</div>
-
-  );
-}
+</body>
+</html>
